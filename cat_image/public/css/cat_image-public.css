@@ -2,3 +2,10 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+.grid{
+    display: grid;
+}
+.grid-col-4{
+    grid-template-columns: repeat(4, 1fr);
+}

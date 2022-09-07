@@ -2,11 +2,21 @@
 
 add_shortcode( 'cat_image_list', 'cat_image_list' );
 
-function cat_image_list(){
+function cat_image_list( $attr ){
+    ob_start();
+
+    //arguments
+    $args = shortcode_atts( array(
+     
+        'limit' => '10',
+
+    ), $attr );
+
+    //CURL ARGS
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://api.thecatapi.com/v1/images/search?limit=99",
+    CURLOPT_URL => 'https://api.thecatapi.com/v1/images/search?limit='.$args['limit'].'',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
@@ -26,11 +36,18 @@ function cat_image_list(){
     if ($err) {
     echo "cURL Error #:" . $err;
     } else {
+        //DECODE JSON
         $decoded = json_decode($response);
+        $i = 1;
+        echo '<div class="cat-image-container grid grid-col-4">';
+
+        //LOOP
         foreach ($decoded as $decode){
             ?>
-                <img src="<?php echo $decode->url; ?>" alt="">
+                <img class="image-<?php echo $i; ?>" src="<?php echo $decode->url; ?>" alt="">
             <?php
         }
+        echo '</div>';
     }
+    return ob_get_clean();
 }

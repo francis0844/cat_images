@@ -74,6 +74,7 @@ class Cat_image_Public {
 		 */
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/cat_image-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'magnific-popup', plugin_dir_url( __FILE__ ) . 'magnific-popup/cat_image-public.css', array(), $this->version, 'all' );
 
 	}
 
