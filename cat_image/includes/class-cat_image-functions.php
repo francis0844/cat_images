@@ -39,12 +39,14 @@ function cat_image_list( $attr ){
         //DECODE JSON
         $decoded = json_decode($response);
         $i = 1;
-        echo '<div class="cat-image-container grid grid-col-4">';
+        echo '<div class="grid grid-col-4 cat-image-container">';
 
         //LOOP
         foreach ($decoded as $decode){
             ?>
+            <a href="<?php echo $decode->url; ?>" class="image-popup-vertical-fit">
                 <img class="image-<?php echo $i; ?>" src="<?php echo $decode->url; ?>" alt="">
+            </a>
             <?php
         }
         echo '</div>';

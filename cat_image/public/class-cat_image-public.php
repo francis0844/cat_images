@@ -74,8 +74,7 @@ class Cat_image_Public {
 		 */
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/cat_image-public.css', array(), $this->version, 'all' );
-		wp_enqueue_style( 'magnific-popup', plugin_dir_url( __FILE__ ) . 'magnific-popup/cat_image-public.css', array(), $this->version, 'all' );
-
+		wp_enqueue_style( 'magnific-popup', plugin_dir_url( __FILE__ ) . 'magnific-popup/magnific-popup.css', array(), $this->version, 'all' );
 	}
 
 	/**
@@ -97,8 +96,9 @@ class Cat_image_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/cat_image-public.js', array( 'jquery' ), $this->version, false );
-
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/cat_image-public.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_script( 'magnific-js', plugin_dir_url( __FILE__ ) . 'magnific-popup/jquery.magnific-popup.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_script( 'magnific-js-min', plugin_dir_url( __FILE__ ) . 'magnific-popup/jquery.magnific-popup.min.js', array( 'jquery' ), $this->version, true );
 	}
 
 }
