@@ -80,3 +80,5 @@ function run_cat_image() {
 
 }
 run_cat_image();
+
+require_once plugin_dir_path(__FILE__) . 'includes/class-cat_image-functions.php';
